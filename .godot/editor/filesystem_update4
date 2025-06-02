@@ -1,2 +1,4 @@
 res://scenes/player/player.tscn
 res://scenes/test/test_scene/test_scene.tscn
+res://scenes/test/test_scene/test_scene.gd
+res://scenes/player/player.gd
