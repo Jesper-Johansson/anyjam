@@ -9,13 +9,12 @@ script = ExtResource("1_s6ucr")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-20.0313, -20.0437)
-scale = Vector2(4.06738, 4.35334)
 polygon = PackedVector2Array(8, 0, 0, 0, 0, 176, 320, 176, 320, 0, 312, 0, 312, 168, 8, 168, 8, 8, 312, 8, 312, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_1d3ff")]
-position = Vector2(624, 352)
+position = Vector2(160, 88)
+max_speed = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
