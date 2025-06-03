@@ -1,2 +1,8 @@
 res://scenes/test/test_scene/test_scene.tscn
 res://scenes/player/player.tscn
+res://scenes/mini_games/watering_game.tscn
+res://scenes/mini_games/water_can.gd
+res://scenes/mini_games/watering/water_drop.tscn
+res://scenes/mini_games/watering/water_drop.gd
+res://scenes/mini_games/watering/watering_game.tscn
+res://scenes/mini_games/watering/water_can.gd
