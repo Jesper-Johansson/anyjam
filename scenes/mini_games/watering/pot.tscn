@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2otwxou556f4"]
+
+[ext_resource type="Script" uid="uid://rrq3qgvjf5sw" path="res://scenes/mini_games/watering/pot.gd" id="1_ktvdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmw2w"]
+size = Vector2(88, 25)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktvdm"]
+font_size = 6
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Pot" type="Polygon2D"]
+polygon = PackedVector2Array(-48, 16, 48, 16, 32, 40, 24, 64, -24, 64, -32, 40)
+script = ExtResource("1_ktvdm")
+
+[node name="Area" type="Area2D" parent="." groups=["count"]]
+unique_name_in_owner = true
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(2, 11.5)
+shape = SubResource("RectangleShape2D_vmw2w")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -27.0
+offset_top = 45.0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "Count: <value>"
+label_settings = SubResource("LabelSettings_ktvdm")
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

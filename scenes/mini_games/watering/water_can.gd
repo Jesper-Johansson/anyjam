@@ -28,9 +28,10 @@ func _process(delta: float) -> void:
 	if rotation_degrees < -30:
 		var drop: WaterDrop = water_drop.instantiate()
 		drop.global_position = drop_point.global_position
+		drop.scale *= rotation_degrees / max_rotation
 		drops.add_child(drop)
 		if rotation_degrees < -60:
-			drop.over.emit()
+			drop.sep = true
 
 
 func handle_rotate(delta: float, rotating: bool) -> void:

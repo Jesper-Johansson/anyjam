@@ -1,21 +1,25 @@
 class_name WaterDrop
 extends Polygon2D
-signal over
+
+
 var sep: bool = false
 
-func _ready() -> void:
-	over.connect(begin_separate)
 
 func _process(delta: float) -> void:
-	global_position.y += 100 * delta
-	if sep:
+	spread_water(delta, sep)
+
+
+
+
+func spread_water(delta: float, sep_bool: bool) -> void:
+	if sep_bool:
+		global_position.y += 100 * delta
 		global_position.x += randf_range(-1, 1)
+	else:
+		global_position.y += 100 * delta
+		global_position.x += randf_range(-0.3, 0.3)
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("drop"):
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("count"):
 		queue_free()
-
-
-func begin_separate() -> void:
-	sep = true
