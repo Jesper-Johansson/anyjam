@@ -9,8 +9,6 @@ func _process(delta: float) -> void:
 	spread_water(delta, sep)
 
 
-
-
 func spread_water(delta: float, sep_bool: bool) -> void:
 	if sep_bool:
 		global_position.y += 100 * delta
