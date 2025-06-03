@@ -1,5 +1,10 @@
 extends Polygon2D
 
+
+@export var water_drop: PackedScene
+@onready var drop_point: Marker2D = %DropPoint
+@onready var drops: Node2D = %Drops
+
 var max_rotation: float = -65
 var spiting: bool = false
 
@@ -19,6 +24,13 @@ func _process(delta: float) -> void:
 	else:
 		spiting = false
 		handle_rotate(delta, spiting)
+	
+	if rotation_degrees < -30:
+		var drop: WaterDrop = water_drop.instantiate()
+		drop.global_position = drop_point.global_position
+		drops.add_child(drop)
+		if rotation_degrees < -60:
+			drop.over.emit()
 
 
 func handle_rotate(delta: float, rotating: bool) -> void:

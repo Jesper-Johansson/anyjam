@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://de0nebsj7ue8n"]
+[gd_scene load_steps=5 format=3 uid="uid://de0nebsj7ue8n"]
 
 [ext_resource type="Script" uid="uid://dw5hfdnygtwa2" path="res://scenes/mini_games/watering/water_can.gd" id="1_yt2bg"]
+[ext_resource type="PackedScene" uid="uid://ysqxcv7outtl" path="res://scenes/mini_games/watering/water_drop.tscn" id="2_dqnf1"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_dqnf1"]
-a = Vector2(-48, 0)
-b = Vector2(48, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmw2w"]
+size = Vector2(96, 5)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_mc4kl"]
-a = Vector2(-152, 0)
-b = Vector2(168, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqnf1"]
+size = Vector2(320, 7)
 
 [node name="WateringGame" type="Node2D"]
 
@@ -20,8 +19,10 @@ polygon = PackedVector2Array(0, 0, 320, 0, 320, 176, 0, 176)
 position = Vector2(216, 72)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, 0, 16, 0, -8)
 script = ExtResource("1_yt2bg")
+water_drop = ExtResource("2_dqnf1")
 
 [node name="DropPoint" type="Marker2D" parent="WaterCan"]
+unique_name_in_owner = true
 position = Vector2(-16, -16)
 
 [node name="Pot" type="Polygon2D" parent="."]
@@ -30,14 +31,17 @@ polygon = PackedVector2Array(-48, 16, 48, 16, 32, 40, 24, 64, -24, 64, -32, 40)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Pot" groups=["drop"]]
 position = Vector2(0, 16)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pot/StaticBody2D"]
-shape = SubResource("SegmentShape2D_dqnf1")
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_vmw2w")
 
 [node name="Floor" type="StaticBody2D" parent="." groups=["drop"]]
 position = Vector2(152, 176)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("SegmentShape2D_mc4kl")
+position = Vector2(8, 2.5)
+shape = SubResource("RectangleShape2D_dqnf1")
+
+[node name="Drops" type="Node2D" parent="."]
+unique_name_in_owner = true
