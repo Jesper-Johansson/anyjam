@@ -2,3 +2,7 @@
 .godot/
 .godot/editor
 /android/
+*.cfg
+/.godot/editor
+/.godot/editor
+*.bin
