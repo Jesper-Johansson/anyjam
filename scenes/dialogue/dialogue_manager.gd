@@ -12,7 +12,7 @@ var _index: int = 0
 var _tween: Tween = null
 func _ready():
 	self.visible = false
-	#play_dialogue(test_dialogue)
+	play_dialogue(test_dialogue)
 
 func _input(event):
 	if Input.is_action_just_pressed("dialogue_next"):
