@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgghq7nngy2w2"]
+
+[ext_resource type="Script" uid="uid://ctbuvulypajci" path="res://scenes/dialogue/dialogue_manager.gd" id="1_3i0lw"]
+[ext_resource type="Texture2D" uid="uid://ckj1xpteks3dh" path="res://resources/test-portrait.jpg" id="1_k6lpl"]
+[ext_resource type="FontFile" uid="uid://bqesa24lsa5f1" path="res://resources/fonts/Chelsea_Market/ChelseaMarket-Regular.ttf" id="1_yophu"]
+
+[node name="DialogueManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3i0lw")
+
+[node name="DialogueBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+theme_override_fonts/normal_font = ExtResource("1_yophu")
+theme_override_font_sizes/normal_font_size = 6
+text = "Test Text"
+visible_characters_behavior = 1
+
+[node name="DialoguePortrait" type="TextureRect" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 0.18
+anchor_bottom = 1.0
+texture = ExtResource("1_k6lpl")
+expand_mode = 1
+stretch_mode = 5

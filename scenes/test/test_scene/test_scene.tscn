@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://da8remwdlehfp"]
+[gd_scene load_steps=5 format=3 uid="uid://da8remwdlehfp"]
 
 [ext_resource type="Script" uid="uid://nc1avjcdog16" path="res://scenes/test/test_scene/test_scene.gd" id="1_s6ucr"]
 [ext_resource type="PackedScene" uid="uid://cojtq85u4ucwp" path="res://scenes/player/player.tscn" id="2_1d3ff"]
+[ext_resource type="PackedScene" uid="uid://cgghq7nngy2w2" path="res://scenes/dialogue/dialogue_manager.tscn" id="3_82vqa"]
+[ext_resource type="Resource" uid="uid://i4kjoa0adn6y" path="res://resources/test_dialogue.tres" id="4_xak0i"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_s6ucr")
@@ -18,3 +20,18 @@ position = Vector2(160, 88)
 
 [node name="Player" parent="." instance=ExtResource("2_1d3ff")]
 position = Vector2(160, 88)
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="DialogueManager" parent="Interface" instance=ExtResource("3_82vqa")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.65
+anchor_right = 0.75
+anchor_bottom = 0.9
+test_dialogue = ExtResource("4_xak0i")

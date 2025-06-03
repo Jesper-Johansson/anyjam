@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=4 format=3 uid="uid://i4kjoa0adn6y"]
+
+[ext_resource type="Script" uid="uid://dwtubhbb4yjgr" path="res://resources/dialogue_event.gd" id="1_y1akj"]
+[ext_resource type="Script" uid="uid://dxgfki3fibm23" path="res://resources/dialogue_speech.gd" id="2_srvtp"]
+
+[sub_resource type="Resource" id="Resource_y1akj"]
+script = ExtResource("2_srvtp")
+text = "Hello, my name is Test Testingson. It is a fine day."
+metadata/_custom_type_script = "uid://dxgfki3fibm23"
+
+[resource]
+script = ExtResource("1_y1akj")
+speeches = Array[ExtResource("2_srvtp")]([SubResource("Resource_y1akj")])
+metadata/_custom_type_script = "uid://dwtubhbb4yjgr"
