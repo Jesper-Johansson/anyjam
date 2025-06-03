@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://da8remwdlehfp"]
 
 [ext_resource type="Script" uid="uid://nc1avjcdog16" path="res://scenes/test/test_scene/test_scene.gd" id="1_s6ucr"]
-[ext_resource type="PackedScene" uid="uid://c1k6x5cvmaciy" path="res://scenes/player/player.tscn" id="2_1d3ff"]
+[ext_resource type="PackedScene" uid="uid://cojtq85u4ucwp" path="res://scenes/player/player.tscn" id="2_1d3ff"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_s6ucr")
@@ -13,8 +13,8 @@ polygon = PackedVector2Array(8, 0, 0, 0, 0, 176, 320, 176, 320, 0, 312, 0, 312, 
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 88)
+
 [node name="Player" parent="." instance=ExtResource("2_1d3ff")]
 position = Vector2(160, 88)
-max_speed = 100.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]

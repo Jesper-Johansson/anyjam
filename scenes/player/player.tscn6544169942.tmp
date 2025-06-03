@@ -3,8 +3,41 @@
 [ext_resource type="Texture2D" uid="uid://dy53iywjhkc2o" path="res://icon.svg" id="1_8afob"]
 [ext_resource type="Script" uid="uid://57eriyqh2luv" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://c8uu51lb0v1ee" path="res://scenes/player/player_states/state_machine.gd" id="2_gmlin"]
-[ext_resource type="Script" uid="uid://bu3yi0sb4s3rg" path="res://scenes/player/player_states/idle.gd" id="3_p47bc"]
-[ext_resource type="Script" uid="uid://f8b7ciu4ndso" path="res://scenes/player/player_states/walk.gd" id="4_75vfm"]
+
+[sub_resource type="GDScript" id="GDScript_dovo2"]
+script/source = "class_name IdleState
+extends State
+
+@export var player: Player
+
+var friction: float = 20.0
+
+
+func physics_update(delta: float) -> void:
+	if player.input_direction != Vector2.ZERO:
+		state_machine.change_state(\"walk\")
+	
+	player.move(0, friction, delta)
+"
+
+[sub_resource type="GDScript" id="GDScript_gmlin"]
+script/source = "class_name WalkState
+extends State
+
+
+@export var player: Player
+
+@export var acceleration: float = 10.0
+@export var max_speed: float = 100.0
+
+
+
+func physics_update(delta: float) -> void:
+	if player.input_direction == Vector2.ZERO:
+		state_machine.change_state(\"idle\")
+	
+	player.move(max_speed, acceleration, delta)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 size = Vector2(32, 32)
@@ -15,16 +48,15 @@ font_size = 6
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dovo2")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="PlayerState" type="Node" parent="."]
 script = ExtResource("2_gmlin")
-initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="PlayerState" node_paths=PackedStringArray("player")]
-script = ExtResource("3_p47bc")
+script = SubResource("GDScript_dovo2")
 player = NodePath("../..")
 
 [node name="Walk" type="Node" parent="PlayerState" node_paths=PackedStringArray("player")]
-script = ExtResource("4_75vfm")
+script = SubResource("GDScript_gmlin")
 player = NodePath("../..")
 
 [node name="Interact" type="Node" parent="PlayerState"]
@@ -37,7 +69,6 @@ texture = ExtResource("1_8afob")
 shape = SubResource("RectangleShape2D_dovo2")
 
 [node name="StateLabel" type="Label" parent="."]
-unique_name_in_owner = true
 offset_left = -20.0
 offset_top = -24.0
 offset_right = 20.0
